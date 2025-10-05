@@ -7,25 +7,26 @@
     border-radius: 2rem;
     background: #fff;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     overflow-x: auto;
     white-space: nowrap;
-    scrollbar-width: none; /* Hide scrollbar (Firefox) */
+    scrollbar-width: none;
   }
   .filter::-webkit-scrollbar {
-    display: none; /* Hide scrollbar (Chrome/Safari) */
+    display: none;
   }
 
   .navbar-nav {
-    flex-wrap: nowrap;
+    display: flex;
+    flex-wrap: nowrap; /* desktop: single line */
     align-items: center;
   }
 
   .nav-item {
     text-align: center;
-    margin: 0 1rem;
-    font-size: 0.85rem;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    margin: 0 0.4rem;
+    font-size: 0.75rem;
+    flex-shrink: 0;
   }
 
   .nav-item a {
@@ -35,7 +36,7 @@
 
   .nav-item i {
     display: block;
-    font-size: 1.4rem;
+    font-size: 1rem;
     opacity: 0.6;
     transition: opacity 0.2s ease, transform 0.2s ease;
   }
@@ -46,36 +47,46 @@
   }
 
   .nav-item p {
-    margin: 0.3rem 0 0;
-    font-size: 0.8rem;
+    margin: 0.2rem 0 0;
+    font-size: 0.7rem;
   }
 
   .toggle-switch {
     border: 1px solid #ddd;
     border-radius: 2rem;
-    padding: 0.6rem 1rem;
+    padding: 0.3rem 0.6rem;
     background-color: #fafafa;
-    white-space: normal;
-    margin-left: 1rem;
+    white-space: nowrap;
+    margin-left: 0.5rem;
     flex-shrink: 0;
+    font-size: 0.7rem;
   }
 
   .form-check-input {
     cursor: pointer;
+    width: 1rem;
+    height: 1rem;
   }
 
-  @media (max-width: 992px) {
+  /* ---------------- MOBILE MENU ---------------- */
+  @media (max-width: 1200px) {
+    .navbar-nav {
+      flex-wrap: wrap; /* allow wrapping in collapsed menu */
+      justify-content: flex-start;
+    }
     .nav-item {
-      margin: 0 0.5rem;
-      font-size: 0.75rem;
+      margin: 0.3rem 0.5rem;
     }
     .nav-item i {
-      font-size: 1.2rem;
+      font-size: 0.95rem;
+    }
+    .nav-item p {
+      font-size: 0.65rem;
     }
     .toggle-switch {
-      padding: 0.5rem 0.8rem;
-      font-size: 0.75rem;
-      margin-right: 1rem;
+      margin-left: 0;
+      margin-top: 0.5rem;
+      font-size: 0.65rem;
     }
   }
 </style>
