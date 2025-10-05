@@ -79,6 +79,10 @@ app.use((req,res,next)=>{
 //     let registeredUser = await User.register(randomUser,"helloworld");
 //     res.send(registeredUser);
 // });
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
 //listing model-->
 app.use("/listings",listings);
 
