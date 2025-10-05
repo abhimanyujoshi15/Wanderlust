@@ -1,111 +1,117 @@
 <% layout("/layouts/boilerplate.ejs") -%>
 <body>
   <style>
-    .nav-item{
-      text-align:center;
-      margin-right:1rem;
-      margin-top:1rem;
-      font-size:0.9rem;
+  /* ---------- FILTER BAR STYLES ---------- */
+  .filter {
+    margin-top: 0.75rem;
+    border-radius: 2rem;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 0.5rem 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Hide scrollbar (Firefox) */
+  }
+  .filter::-webkit-scrollbar {
+    display: none; /* Hide scrollbar (Chrome/Safari) */
+  }
+
+  .navbar-nav {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .nav-item {
+    text-align: center;
+    margin: 0 1rem;
+    font-size: 0.85rem;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .nav-item a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  .nav-item i {
+    display: block;
+    font-size: 1.4rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .nav-item:hover i {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  .nav-item p {
+    margin: 0.3rem 0 0;
+    font-size: 0.8rem;
+  }
+
+  .toggle-switch {
+    border: 1px solid #ddd;
+    border-radius: 2rem;
+    padding: 0.6rem 1rem;
+    background-color: #fafafa;
+    white-space: normal;
+    margin-left: 1rem;
+    flex-shrink: 0;
+  }
+
+  .form-check-input {
+    cursor: pointer;
+  }
+
+  @media (max-width: 992px) {
+    .nav-item {
+      margin: 0 0.5rem;
+      font-size: 0.75rem;
     }
-    .nav-item i{
-      opacity: 0.6;
-      font-size: 1.2rem;;
+    .nav-item i {
+      font-size: 1.2rem;
     }
-    .nav-item i:hover{
-      opacity: 1;
+    .toggle-switch {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.75rem;
+      margin-right: 1rem;
     }
-    .filter{
-      margin-top:0.5rem;
-      border-radius:1.5rem;
-    }
-    .tax-info{
-      display: none;
-    }
-    .toggle-switch{
-      border:1px solid black;
-      border-radius:1rem;
-      height:3.25rem;
-      padding:1rem 1.5rem 1rem 1.5rem;
-      margin-right:1.5rem;
-    }
-    @media (max-width:1300px){
-      .nav-item{
-        margin-right:0.1rem;
-      }
-    }
-  </style>
-<nav class="navbar navbar-expand-xl bg-body-tertiary filter">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  }
+</style>
+
+<nav class="navbar navbar-expand-xl filter">
+  <div class="container-fluid px-0">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+      aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-fire"></i><p>Trending</p></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-bed"></i><p>Rooms</p></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-city"></i><p>Iconic Cities</p></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-sun"></i><p>Desert</p></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-umbrella-beach"></i><p>Beaches</p></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-tractor"></i><p>Farms</p></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-indian-rupee-sign"></i><p>Exclusive</p></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-mountain"></i><p>Mountains</p></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-snowflake"></i><p>Arctic</p></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-hands-praying"></i><p>Divine</p></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-building"></i><p>Metropolitan</p></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-sailboat"></i><p>Houseboat</p></a>
-        </li>
-        <div class="form-check form-switch form-check-reverse nav-item toggle-switch">
+      <ul class="navbar-nav mx-auto d-flex align-items-center">
+        <li class="nav-item"><a class="nav-link active" href="#"><i class="fa-solid fa-fire"></i><p>Trending</p></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-bed"></i><p>Rooms</p></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-city"></i><p>Iconic Cities</p></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-sun"></i><p>Desert</p></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-umbrella-beach"></i><p>Beaches</p></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-tractor"></i><p>Farms</p></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-indian-rupee-sign"></i><p>Exclusive</p></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-mountain"></i><p>Mountains</p></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-snowflake"></i><p>Arctic</p></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-hands-praying"></i><p>Divine</p></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-building"></i><p>Metropolitan</p></a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-sailboat"></i><p>Houseboat</p></a></li>
+
+        <div class="form-check form-switch form-check-reverse toggle-switch">
           <input class="form-check-input" type="checkbox" id="switchCheckReverse">
-          <label class="form-check-label" for="switchCheckReverse"><b>Display Total after Taxes</b></label>
+          <label class="form-check-label" for="switchCheckReverse"><b>Show Total After Tax</b></label>
         </div>
       </ul>
     </div>
   </div>
 </nav>
-  
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-    <% for(let listing of allListing){%>
-        <a href="/listings/<%=listing._id%>" style="text-decoration:none">
-        <div class="card listing-card">
-  <img src="<%=listing.image.url%>" class="card-img-top" alt="Listing Image">
-  <div class="card-img-overlay"></div>
-  <div class="card-body">
-    <b><p class="card-text"> <%=listing.title%></b>
-    <br>
-       &#8377; <%=listing.price.toLocaleString("en-IN")%>/night
-       <i class="tax-info"> &nbsp; +18% GST</i>
-    </p>
-  </div>
-</div>
-</a>
-        <% } %>
-        </div>
-    <!-- <form method="GET" action="listings/new">
-        <button>Create new Listing</button>
-    </form> -->
+
 </body>
 <script>
   let taxSwitch = document.getElementById("switchCheckReverse");
